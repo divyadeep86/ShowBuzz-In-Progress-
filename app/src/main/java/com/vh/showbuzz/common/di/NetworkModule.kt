@@ -54,7 +54,7 @@ object NetworkModule {
 
         val contentType = "application/json".toMediaType()
         // For simplicity in this assignment we are passing baseUrl directly here but base Url can be fetch from local.properties which is more secure way.
-        return Retrofit.Builder().baseUrl("https://fakestoreapi.com/").client(httpClient)
+        return Retrofit.Builder().baseUrl("https://api.themoviedb.org/3/").client(httpClient)
             .addConverterFactory(json.asConverterFactory(contentType)).build()
     }
 
