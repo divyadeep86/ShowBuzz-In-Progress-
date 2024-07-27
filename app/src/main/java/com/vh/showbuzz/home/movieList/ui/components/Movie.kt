@@ -19,11 +19,11 @@ import com.vh.showbuzz.home.movieList.domain.Movie
 
 
 @Composable
- fun Movie(movie: Movie, onMovieClick: (Movie) -> Unit) {
-    val imageHeight = LocalConfiguration.current.screenHeightDp * 0.25f
+ fun Movie(movie: Movie,modifier: Modifier = Modifier ,onMovieClick: (Movie) -> Unit) {
+    val imageHeight = LocalConfiguration.current.screenHeightDp * 0.30f
     val imageWidth = LocalConfiguration.current.screenHeightDp * 0.20f
     Box(
-        modifier = Modifier
+        modifier = modifier
             .wrapContentSize()
             .clip(CircleShape.copy(CornerSize(12.dp)))
             .clickable(onClick = { onMovieClick(movie) })

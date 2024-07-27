@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -22,8 +25,17 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-    }
 
+        val localProperties = Properties()
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localProperties.load(FileInputStream(localPropertiesFile))
+        }
+        buildConfigField("String", "AUTH_TOKEN", "\"${localProperties.getProperty("authToken")}\"")
+    }
+buildFeatures{
+    buildConfig = true
+}
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -37,6 +49,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }

@@ -1,6 +1,7 @@
 package com.vh.showbuzz.common.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.vh.showbuzz.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,7 +33,7 @@ object NetworkModule {
             chain.proceed(
                 chain.request().newBuilder()
                     .header("Accept", "application/json")
-                    .header("Authorization","Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNDNjYThjNzY1YmI5MThlMDdiMjhmNGVjNzM5ZDg2YiIsInN1YiI6IjVkMTIzNjlkOTI1MTQxNTI0ZGMwZWY5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0ioH55ly0oPTXEw5jaGp6CETKpNXrhZlNs0DS2yrd9k")
+                    .header("Authorization","Bearer ${BuildConfig.AUTH_TOKEN}")
                     .build())
         }.dispatcher(dispatcher).connectTimeout(
             NETWORK_TIMEOUT, TimeUnit.MILLISECONDS)

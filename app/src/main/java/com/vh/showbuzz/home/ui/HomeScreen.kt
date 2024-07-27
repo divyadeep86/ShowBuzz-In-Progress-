@@ -17,7 +17,7 @@ import androidx.paging.compose.LazyPagingItems
 import com.vh.showbuzz.home.movieList.domain.Movie
 import com.vh.showbuzz.home.movieList.ui.MovieListPane
 import com.vh.showbuzz.home.tvShows.domain.TvShow
-import com.vh.showbuzz.home.ui.components.HorizontalPager
+import com.vh.showbuzz.home.ui.components.HorizontalPagerWithBgImage
 
 @Composable
 fun HomeScreen(
@@ -37,7 +37,7 @@ fun HomeScreen(
             .fillMaxSize()
     ) {
         item {
-            HorizontalPager(movie =popularList)
+            HorizontalPagerWithBgImage(movie =popularList)
         }
         item { MovieListPane(categoryName = "Now Playing",movieList = nowPlayingMovies) }
         item {MovieListPane(categoryName = "Upcoming Movies",movieList = upcomingMovie)  }

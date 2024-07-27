@@ -13,6 +13,7 @@ data class Movie(
     val popularity: String,
     val release_date: String,
     val title: String,
+    val overview:String,
     val poster_path: String,
     val vote_average: String,
     val vote_count: String
@@ -30,7 +31,8 @@ data class Movie(
             title = "Title",
             poster_path = "poster_path",
             vote_average = "1.0",
-            vote_count = "1"
+            vote_count = "1",
+            overview = "Moview overview"
         )
     }
 }
@@ -43,6 +45,7 @@ fun MovieDTO.toMovie() = Movie(
     popularity = popularity.toString(),
     release_date = release_date,
     title = title,
+    overview = overview,
     vote_average = vote_average.toString(),
     vote_count = vote_count.toString(),
     poster_path = "https://image.tmdb.org/t/p/original/$poster_path"
