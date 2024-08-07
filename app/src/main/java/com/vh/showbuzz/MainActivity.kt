@@ -18,6 +18,7 @@ import coil.ImageLoader
 import coil.compose.LocalImageLoader
 import com.vh.showbuzz.common.navigation.AppNavHost
 import com.vh.showbuzz.ui.theme.ShowBuzzTheme
+import com.vh.showbuzz.ui.theme.themeMode
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -29,6 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            themeMode()
             ShowBuzzTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     CompositionLocalProvider(CoilImageLoader provides imageLoader) {

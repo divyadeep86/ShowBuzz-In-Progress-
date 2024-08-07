@@ -216,7 +216,7 @@ fun themeMode(isDarkTheme: Boolean = isSystemInDarkTheme()): AppColors {
         else -> lightColors()
     }
     // val systemUiController = rememberSystemUiContr()
-    val view = LocalView.current
+/*    val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             (view.context as? Activity)?.window?.statusBarColor =
@@ -227,7 +227,7 @@ fun themeMode(isDarkTheme: Boolean = isSystemInDarkTheme()): AppColors {
             }
 
         }
-    }
+    }*/
     return colorScheme
 
 }

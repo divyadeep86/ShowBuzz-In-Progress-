@@ -5,6 +5,9 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vh.showbuzz.common.network.ErrorConstant
 import com.vh.showbuzz.common.network.getError
+import com.vh.showbuzz.common.utils.getCurrentDate
+import com.vh.showbuzz.common.utils.getCurrentDatePlusYearString
+import com.vh.showbuzz.common.utils.getCurrentDateString
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -24,7 +27,7 @@ class MovieListPagingSource(private val movieListApi: MovieListApi, private val 
                 MovieType.NOW_PLAYING -> movieListApi.getNowPlayingMovies(language = "en-US", page = nextPageNumber)
                 MovieType.POPULAR -> movieListApi.getPopularMovies(language = "en-US", page = nextPageNumber)
                 MovieType.TOP_RATED -> movieListApi.getTopRatedMovies(language = "en-US", page = nextPageNumber)
-                MovieType.UPCOMING -> movieListApi.getUpcomingMovies(language = "en-US", page = nextPageNumber)
+                MovieType.UPCOMING -> movieListApi.getUpcomingMovies(language = "en-US", page = nextPageNumber, releaseDateGte = getCurrentDateString(), releaseDateLte = getCurrentDatePlusYearString(1))
             }
             LoadResult.Page(
                 data =response.results,

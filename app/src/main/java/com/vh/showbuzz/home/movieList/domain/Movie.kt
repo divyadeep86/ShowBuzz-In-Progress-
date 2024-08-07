@@ -1,5 +1,8 @@
 package com.vh.showbuzz.home.movieList.domain
 
+import com.vh.showbuzz.common.utils.convertNumberToDouble
+import com.vh.showbuzz.common.utils.extractYear
+import com.vh.showbuzz.common.utils.toPercentage
 import com.vh.showbuzz.home.movieList.data.MovieDTO
 import kotlinx.serialization.Serializable
 
@@ -12,11 +15,12 @@ data class Movie(
     val original_title: String,
     val popularity: String,
     val release_date: String,
+    val release_year:String,
     val title: String,
     val overview:String,
     val poster_path: String,
-    val vote_average: String,
-    val vote_count: String
+    val scorePercentage:Int,
+    val prgress:Float,
 ){
 
     companion object{
@@ -28,10 +32,11 @@ data class Movie(
             original_title = "Original Title",
             popularity = "1.0",
             release_date = "2021-10-10",
+            release_year = "2024",
             title = "Title",
             poster_path = "poster_path",
-            vote_average = "1.0",
-            vote_count = "1",
+            scorePercentage = 0,
+            prgress = 0f,
             overview = "Moview overview"
         )
     }
@@ -44,9 +49,10 @@ fun MovieDTO.toMovie() = Movie(
     original_title = original_title,
     popularity = popularity.toString(),
     release_date = release_date,
+    release_year = release_date.extractYear().toString(),
     title = title,
     overview = overview,
-    vote_average = vote_average.toString(),
-    vote_count = vote_count.toString(),
+    scorePercentage = vote_average.toPercentage(),
+    prgress = vote_average.convertNumberToDouble().toFloat(),
     poster_path = "https://image.tmdb.org/t/p/original/$poster_path"
 )

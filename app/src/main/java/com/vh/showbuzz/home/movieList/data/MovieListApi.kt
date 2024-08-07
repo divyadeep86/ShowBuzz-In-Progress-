@@ -14,5 +14,5 @@ interface MovieListApi {
     suspend fun getTopRatedMovies(@Query("language") language:String,@Query("page") page:Int): MovieListDTO
 
     @GET("movie/upcoming")
-    suspend fun getUpcomingMovies(@Query("language") language:String,@Query("page") page:Int, @Query("release_date.gte") releaseDate:String="2024-07-20",@Query("release_date.lte") releaseDate2:String="2025-07-20"): MovieListDTO
+    suspend fun getUpcomingMovies(@Query("language") language:String,@Query("page") page:Int, @Query("release_date.gte") releaseDateGte:String,@Query("release_date.lte") releaseDateLte:String): MovieListDTO
 }
